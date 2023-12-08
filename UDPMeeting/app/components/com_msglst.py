@@ -1,9 +1,10 @@
 import sys
-from PyQt5.QtCore import Qt, QRect, QPointF
-from PyQt5.QtGui import QPainter, QColor, QFont, QPolygonF
+from PyQt5.QtCore import Qt, QRect, QPointF,QSize
+from PyQt5.QtGui import QPainter, QColor, QFont
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QHBoxLayout, QListWidget, QListWidgetItem, QVBoxLayout
-from qfluentwidgets import PushButton, StrongBodyLabel, LineEdit,ListWidget,TextEdit,TogglePushButton
+from qfluentwidgets import PushButton, StrongBodyLabel, LineEdit,ListWidget,TextEdit,ToolButton
 from qfluentwidgets import FluentIcon as FIF
+from ..common.config import cfg
 
 
 DEFAULT_HEAD = "path_to_default_profile_image.png"
@@ -23,127 +24,7 @@ class InitialsLabel(StrongBodyLabel):
         font.setPointSize(10)
         font.setWeight(QFont.Bold)
         self.setFont(font)
-
-class BubbleText(StrongBodyLabel):
-    border = 5
-    trigon = 5  # Reduced size of the tail
-    lineLen = 100
-
-    minH = 2 * trigon + 2 * border
-    minW = 2 * trigon + 2 * border
-
-    def __init__(self, listItem, listView, text=DEFAULT_MSG, timestamp=DEFAULT_TIMESTAMP, lr=True):
-        super().__init__()
-        self.listItem = listItem
-        self.listView = listView
-        self.text = text
-        self.timestamp = timestamp
-        self.lr = lr
-
-        self.setFont(QFont("Sans-serif", 12, QFont.Normal))
-        self.setStyleSheet("color: black;")
-        self.setWordWrap(True)
-        self.setMinimumWidth(self.minW)
-        self.setMaximumWidth(200)  # Assuming a max width for text bubbles
-        self.setContentsMargins(10, 10, 10, 25)  # Extra margin for the timestamp
-
-        self.setState(False)  # Initial state without mouse hover
-
-    def paintEvent(self, e):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.setBrush(self.colorLeftM if not self.lr else self.colorRightM)
-        painter.setPen(Qt.NoPen)
-
-        rect = QRect(self.border, self.border, self.width() - 2 * self.border, self.height() - 2 * self.border - 15)
-        painter.drawRoundedRect(rect, 10, 10)
-
-        if self.lr:
-            polygon = QPolygonF([
-                QPointF(self.trigon + self.border, self.height() - 25),
-                QPointF(self.trigon * 2 + self.border, self.height() - 25 - self.trigon),
-                QPointF(self.trigon * 2 + self.border, self.height() - 25)
-            ])
-        else:
-            polygon = QPolygonF([
-                QPointF(self.width() - self.trigon - self.border, self.height() - 25),
-                QPointF(self.width() - 2 * self.trigon - self.border, self.height() - 25 - self.trigon),
-                QPointF(self.width() - 2 * self.trigon - self.border, self.height() - 25)
-            ])
-        painter.drawPolygon(polygon)
-
-        super().paintEvent(e)
-        painter.drawText(QRect(0, self.height() - 20, self.width(), 20), Qt.AlignCenter, self.timestamp)
-
-    def setState(self, mouse):
-        self.colorLeftM = QColor("#f0f0f0")  # Light grey color for receiver
-        self.colorRightM = QColor("#0078d7")  # Blue color for sender
-        self.update()
-
-class BubbleText(StrongBodyLabel):
-    border = 5
-    trigon = 10  # Reduced size of the tail
-    lineLen = 100
-
-    minH = 2 * trigon + 2 * border
-    minW = 2 * trigon + 2 * border
-
-    def __init__(self, listItem, listView, text=DEFAULT_MSG, timestamp=DEFAULT_TIMESTAMP, lr=True):
-        super().__init__()
-        self.listItem = listItem
-        self.listView = listView
-        self.text = text
-        self.timestamp = timestamp
-        self.lr = lr
-
-        self.setFont(QFont("MesloLGM Nerd Font Mono", 12, QFont.Normal))
-        self.setStyleSheet("color: black;")
-        self.setWordWrap(True)
-        self.setMinimumWidth(self.minW)
-        self.setMaximumWidth(400)  # Assuming a max width for text bubbles
-        self.setContentsMargins(10, 10, 20, 25)  # Extra margin for the timestamp
-        # self.setContentsMargins(2, 2, 2, 2)  # Extra margin for the timestamp
-
-        self.setState(False)  # Initial state without mouse hover
-
-    def setState(self, mouse):
-        # self.colorLeftM = QColor("#f0f0f0")  # Light grey color for receiver
-        self.colorLeftM = QColor("#95EC69")  # Light green color for receiver
-        self.colorRightM = QColor("#0078d7")  # Blue color for sender
-        self.update()
-
-    def paintEvent(self, e):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.setBrush(self.colorLeftM if not self.lr else self.colorRightM)
-        painter.setPen(Qt.NoPen)
-
-        rect = QRect(self.border, self.border, self.width() - 2 * self.border, self.height() - 2 * self.border - 15)
-        painter.drawRoundedRect(rect, 10, 10)
-
-        if self.lr:
-            polygon = QPolygonF([
-                QPointF(self.trigon + self.border, self.height() - 25),
-                QPointF(self.trigon * 2 + self.border, self.height() - 25 - self.trigon),
-                QPointF(self.trigon * 2 + self.border, self.height() - 25)
-            ])
-        else:
-            polygon = QPolygonF([
-                QPointF(self.width() - self.trigon - self.border, self.height() - 25),
-                QPointF(self.width() - 2 * self.trigon - self.border, self.height() - 25 - self.trigon),
-                QPointF(self.width() - 2 * self.trigon - self.border, self.height() - 25)
-            ])
-        painter.drawPolygon(polygon)
-
-        super().paintEvent(e)
-        painter.drawText(QRect(0, self.height() - 20, self.width(), 20), Qt.AlignCenter, self.timestamp)
-
-    def enterEvent(self, event):
-        self.setState(True)
-
-    def leaveEvent(self, event):
-        self.setState(False)
-
+        
 
 class TextItem(QWidget):
     def __init__(self, listItem, listView, text=DEFAULT_MSG, timestamp=DEFAULT_TIMESTAMP, lr=True, initials=DEFAULT_INITIALS, color=DEFAULT_INITIALS_BG):
@@ -157,16 +38,20 @@ class TextItem(QWidget):
         # hbox.setSpacing(10)
 
         # Create the profile picture (or initials label)
-        self.initials_label = InitialsLabel(initials, color)
-        self.initials_label.setFixedSize(40, 40)  # Size of the profile picture
+        # self.initials_label = InitialsLabel(initials, color)
+        self.initials_label = ToolButton(initials)
+        self.initials_label.setIconSize(QSize(40, 40))
+        # self.initials_label.setBaseSize(QSize(40, 40))
+        # self.initials_label.setFixedSize(40, 40)  # Size of the profile picture
 
         # Create the timestamp label
         self.timestamp_label = StrongBodyLabel(timestamp)
         self.timestamp_label.setStyleSheet("color: grey;")
 
         # Create the text bubble
-        self.message_bubble = BubbleText(listItem, listView, text, timestamp, lr)
-        self.message_bubble.setStyleSheet("background-color: transparent;")
+        # self.message_bubble = BubbleText(listItem, listView, text, timestamp, lr)
+        self.message_bubble = ToolButton(text)
+        # self.message_bubble.setStyleSheet("background-color: transparent;")
         self.message_bubble.setText(text)
 
         # Create a vertical layout for the timestamp and text bubble
@@ -260,7 +145,7 @@ class Worker(QObject):
         text = "Hi everyone"
         timestamp = "6:32 PM"
         lr = True
-        initials = "FR"
+        initials = "app/resource/images/Qingbolan.jpg"
         color = "#9acd32"
         if msg_list is None:
             self.msg_list.add_message_signal.emit(text, timestamp, lr, initials, color)
@@ -284,9 +169,12 @@ from PyQt5.QtWidgets import QHBoxLayout
 from qfluentwidgets import TextEdit, PushButton
 
 class CommentInputArea(QWidget):
-    def __init__(self, work:Worker = None, parent=None):
+    def __init__(self, work:Worker = None, sio=None, room=None, userName="User", parent=None):
         super().__init__(parent=parent)
         self.work = work
+        self.sio = sio
+        self.room = room
+        self.userName = userName
         self.setupUi()
 
     def setupUi(self):
@@ -311,22 +199,14 @@ class CommentInputArea(QWidget):
         # Get the text from the text edit
         text = self.text_edit.toPlainText()
         print(text)
-        # Clear the text edit
-        self.text_edit.clear()
-        timestamp = "6:32 PM"
-        lr = False
-        initials = "FR"
-        color = "#9acd32"
-        msg = {'text':text, 'timestamp':timestamp, 'lr':lr, 'initials':initials, 'color':color}
-        if self.work is not None:
-            self.work.add_message(msg)
+        self.sio.emit('message', {'username': cfg.userName.value, 'room': self.room, 'message': text})
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ml = MsgList()
     ml.setMinimumSize(400, 1000)
-    ml.addTextMsg("Hi everyone", "6:32 PM", True, "FR", "#9acd32")
-    ml.addTextMsg("Hello", "6:32 PM", False, "TA", "#ebedf2")
+    ml.addTextMsg("Hi everyone", "6:32 PM", True, "app/resource/images/Qingbolan.jpg", "#9acd32")
+    ml.addTextMsg("Hello", "6:32 PM", False, "app/resource/images/ShiHaoTong.jpg", "#ebedf2")
     ml.show()
     worker = Worker(ml)
 

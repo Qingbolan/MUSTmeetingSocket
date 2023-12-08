@@ -4,7 +4,7 @@ from enum import Enum
 from PyQt5.QtCore import QLocale
 from qfluentwidgets import (qconfig, QConfig, ConfigItem, OptionsConfigItem, BoolValidator,
                             OptionsValidator, RangeConfigItem, RangeValidator,
-                            FolderListValidator, EnumSerializer, FolderValidator, ConfigSerializer, __version__)
+                            FolderListValidator, EnumSerializer, FolderValidator,ConfigValidator, ConfigSerializer, __version__)
 
 
 class Language(Enum):
@@ -34,6 +34,8 @@ class Config(QConfig):
         "Folders", "LocalMusic", [], FolderListValidator())
     downloadFolder = ConfigItem(
         "Folders", "Download", "app/download", FolderValidator())
+    
+    userName = ConfigItem("userName", "name", "MustMeet", restart=True)
 
     # main window
     dpiScale = OptionsConfigItem(

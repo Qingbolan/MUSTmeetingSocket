@@ -85,28 +85,6 @@ class SettingInterface(ScrollArea):
             parent=self.personalGroup
         )
 
-        # # material
-        # self.materialGroup = SettingCardGroup(
-        #     self.tr('Material'), self.scrollWidget)
-        # self.blurRadiusCard = RangeSettingCard(
-        #     cfg.blurRadius,
-        #     FIF.ALBUM,
-        #     self.tr('Acrylic blur radius'),
-        #     self.tr('The greater the radius, the more blurred the image'),
-        #     self.materialGroup
-        # )
-
-        # # update software
-        # self.updateSoftwareGroup = SettingCardGroup(
-        #     self.tr("Software update"), self.scrollWidget)
-        # self.updateOnStartUpCard = SwitchSettingCard(
-        #     FIF.UPDATE,
-        #     self.tr('Check for updates when the application starts'),
-        #     self.tr('The new version will be more stable and have more features'),
-        #     configItem=cfg.checkUpdateAtStartUp,
-        #     parent=self.updateSoftwareGroup
-        # )
-
         # application
         self.aboutGroup = SettingCardGroup(self.tr('About'), self.scrollWidget)
         self.feedbackCard = PrimaryPushSettingCard(

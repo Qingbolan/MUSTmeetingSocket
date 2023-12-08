@@ -71,7 +71,7 @@ class MeetingInfoWidget(QWidget):
         self.line2_layout.setAlignment(Qt.AlignLeft)  # Align items to the left
         for user in userImageList:
             userImage = ToolButton(user)
-            userImage.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
+            # userImage.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
             userImage.setIconSize(QSize(40, 40))
             self.line2_layout.addWidget(userImage,0, Qt.AlignLeft)
 
@@ -93,9 +93,9 @@ class UserProfile(QWidget):
         self.panelLayout.setSpacing(4)
 
         v_layout = QVBoxLayout()
-        avatar = ToolButton(':/gallery/images/kunkun.png')
+        avatar = ToolButton(f'app/resource/images/{self.user_id}.jpg')
         avatar.setIconSize(QSize(150, 150))
-        avatar.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
+        # avatar.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
         # avatar.setPixmap(QPixmap('app/resource/images/Qingbolan.jpg').scaled(180, 180, Qt.KeepAspectRatio))
         h_layout.addWidget(avatar, alignment=Qt.AlignHCenter)
 
@@ -152,20 +152,47 @@ class UserProfile(QWidget):
         dialog.exec_()
 
     def populate_meetings(self):
-        for i in range(5):
-            meeting_name = f'Meeting {i+1}'
-            user_image_list = [':/gallery/images/kunkun.png', ':/gallery/images/kunkun.png']
+        # for i in range(5):
+        #     meeting_name = f'Meeting {i+1}'
+        #     user_image_list = [':/gallery/images/kunkun.png', ':/gallery/images/kunkun.png']
 
-            # Create a QListWidgetItem
-            meeting_item = QListWidgetItem(self.meetings_list)
-            self.meetings_list.addItem(meeting_item)
+        #     # Create a QListWidgetItem
+        #     meeting_item = QListWidgetItem(self.meetings_list)
+        #     self.meetings_list.addItem(meeting_item)
 
-            # Create an instance of MeetingInfoWidget and set it as the item widget
-            meeting_widget = MeetingInfoWidget(meeting_name, user_image_list)
-            self.meetings_list.setItemWidget(meeting_item, meeting_widget)
+        #     # Create an instance of MeetingInfoWidget and set it as the item widget
+        #     meeting_widget = MeetingInfoWidget(meeting_name, user_image_list)
+        #     self.meetings_list.setItemWidget(meeting_item, meeting_widget)
 
-            meeting_widget_size = meeting_widget.sizeHint()
-            meeting_item.setSizeHint(meeting_widget_size)
+        #     meeting_widget_size = meeting_widget.sizeHint()
+        #     meeting_item.setSizeHint(meeting_widget_size)
+        meeting_name ='Group Meeting One'
+        user_image_list = ['app/resource/images/Qingbolan.jpg', 'app/resource/images/ShiHaoTong.jpg', 'app/resource/images/Arbitrary.jpg']
+
+        # Create a QListWidgetItem
+        meeting_item = QListWidgetItem(self.meetings_list)
+        self.meetings_list.addItem(meeting_item)
+
+        # Create an instance of MeetingInfoWidget and set it as the item widget
+        meeting_widget = MeetingInfoWidget(meeting_name, user_image_list)
+        self.meetings_list.setItemWidget(meeting_item, meeting_widget)
+
+        meeting_widget_size = meeting_widget.sizeHint()
+        meeting_item.setSizeHint(meeting_widget_size)
+
+        meeting_name ='Voice Meeting Test'
+        user_image_list = ['app/resource/images/Qingbolan.jpg', 'app/resource/images/ShiHaoTong.jpg']
+
+        # Create a QListWidgetItem
+        meeting_item = QListWidgetItem(self.meetings_list)
+        self.meetings_list.addItem(meeting_item)
+
+        # Create an instance of MeetingInfoWidget and set it as the item widget
+        meeting_widget = MeetingInfoWidget(meeting_name, user_image_list)
+        self.meetings_list.setItemWidget(meeting_item, meeting_widget)
+
+        meeting_widget_size = meeting_widget.sizeHint()
+        meeting_item.setSizeHint(meeting_widget_size)
 
 if __name__ == '__main__':
     app = QApplication([])

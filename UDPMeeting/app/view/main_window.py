@@ -4,12 +4,12 @@ from PyQt5.QtCore import Qt, QSize, QThread, pyqtSignal
 from PyQt5.QtGui import QIcon, QDesktopServices
 from PyQt5.QtWidgets import QApplication, QFrame, QHBoxLayout
 
-from qfluentwidgets import NavigationAvatarWidget, NavigationItemPosition, MessageBox, FluentWindow, SplashScreen, SubtitleLabel, setFont
+from qfluentwidgets import NavigationItemPosition, MessageBox, FluentWindow, SplashScreen, SubtitleLabel, setFont
 from qfluentwidgets import FluentIcon as FIF
 
 from .launcher_interface import GalleryInterface
 from .setting_interface import SettingInterface
-from .text_interface import TextInterface
+# from .text_interface import TextInterface
 from .dialog_interface import DialogInterface
 from .user_interface import UserInterface
 from .central_interface import centralInterface
@@ -25,22 +25,6 @@ import os
 # import logging
 import psutil
 import GPUtil
-
-# # 日志设置
-# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-# # 创建一个文件处理器并设置级别为 INFO
-# file_handler = logging.FileHandler('app.log', mode='w')
-# file_handler.setLevel(logging.INFO)
-
-# # 创建一个格式器
-# formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-# file_handler.setFormatter(formatter)
-
-# # 添加文件处理器到默认的记录器
-# logger = logging.getLogger()
-# logger.addHandler(file_handler)
-# logger.info('___App started___') 
 
 class Widget(QFrame):
 
@@ -73,15 +57,34 @@ class UpdateTitleThread(QThread):
 
             self.update_title_signal.emit(f'MUST_UDPmeeting (CPU: {cpu_usage}% - GPU: {gpu_usage}%)')
 
+
+
+# from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton
+from .login_rgst_interface import LoginDialog
+
+
 class MainWindow(FluentWindow):
 
     def __init__(self):
         super().__init__()
+
+        
+        # Initialize login dialog
+        loginDialog = LoginDialog(self)
+        if not(loginDialog.exec_()):
+            self.close()  # Close the application if login fails or is cancelled
+
+        self.userName= loginDialog.getUsername()
+
+        print(f"Login as {self.userName}")
+        cfg.userName.value = self.userName
+        print(cfg.userName.value)
+
         self.initWindow()
         self.resizeEvent(None)
 
         self.settingInterface = SettingInterface(self)
-        self.textInterface = TextInterface(self)
+        # self.textInterface = TextInterface(self)
         self.dialogInterface = DialogInterface()
         self.userInterface = UserInterface()
         self.centralInterface = centralInterface()
@@ -105,7 +108,7 @@ class MainWindow(FluentWindow):
         # add navigation items
         t = Translator()
         self.addSubInterface(self.centralInterface, FIF.HOME, "HOME CENTER")
-        self.addSubInterface(self.textInterface, FIF.COMMAND_PROMPT, "RUNNING WINDOWS")
+        # self.addSubInterface(self.textInterface, FIF.COMMAND_PROMPT, "RUNNING WINDOWS")
         self.navigationInterface.addSeparator()
         self.addSubInterface(self.dialogInterface, FIF.CHAT, "MEETING ROOM")
 

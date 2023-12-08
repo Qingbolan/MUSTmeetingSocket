@@ -14,10 +14,33 @@ from ..components.QCodeEditor import QCodeEditor,CppHighlighter
 from ..components.com_user_home_page import *
 from ..components.com_msglst import *
 from ..components.com_chat_page import ChatRoom
+from ..common.config import cfg
 
 
 from PyQt5.QtWidgets import QSizePolicy
 
+
+
+
+class FriendInfolist(QWidget):
+    def __init__(self, userImageList: list, parent=None):
+        super().__init__(parent)
+
+        layout = QVBoxLayout(self)
+
+        # self.meetingName = StrongBodyLabel(meetingName)
+        # layout.addWidget(self.meetingName)
+
+        self.line2_layout = QHBoxLayout()
+        self.line2_layout.setSpacing(0)  # No extra spacing
+        self.line2_layout.setAlignment(Qt.AlignLeft)  # Align items to the left
+        for user in userImageList:
+            userImage = ToolButton(user)
+            # userImage.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
+            userImage.setIconSize(QSize(40, 40))
+            self.line2_layout.addWidget(userImage,0, Qt.AlignLeft)
+
+        layout.addLayout(self.line2_layout, Qt.AlignLeft)
 
 
 class centralInterface(QWidget):
@@ -45,18 +68,18 @@ class centralInterface(QWidget):
         self.closeDisplayModeComboBox = ComboBox(self)
 
         # self.friendsLabel = SubtitleLabel(FIF.PEOPLE,self.tr('Friends'), self)
-        self.friendsLabel = SubtitleLabel(self.tr('Friends'), self)
-        # self.friendsList = UsersDisplayWidget()
+        self.friendsLabel = SubtitleLabel(self.tr('ALL Friends'), self)
+        self.friendsList = FriendInfolist(['app/resource/images/Qingbolan.jpg', 'app/resource/images/ShiHaoTong.jpg', 'app/resource/images/Arbitrary.jpg'])
 
         self.hBoxLayout = QHBoxLayout(self)
         self.vBoxLayout = QVBoxLayout(self.tabView)
         self.panelLayout = QVBoxLayout(self.controlPanel)
 
         # self.songInterface = QLabel('Song Interface', self)
-        self.userHomeInterface = UserProfile("Qingbolan")
+        self.userHomeInterface = UserProfile(cfg.userName.value)
         
         self.albumInterface = ChatRoom()
-        self.artistInterface = QLabel('Artist Interface', self)
+        # self.artistInterface = QLabel('Artist Interface', self)
 
         # add items to pivot
         self.__initWidget()
@@ -77,9 +100,7 @@ class centralInterface(QWidget):
         self.addSubInterface(self.userHomeInterface,
                              'tabSongInterface', self.tr('userHome'), FIF.HOME)
         self.addSubInterface(self.albumInterface,
-                             'tabAlbumInterface', self.tr('Album'), FIF.CHAT)
-        self.addSubInterface(self.artistInterface,
-                             'tabArtistInterface', self.tr('Artist'), '../resource/images/Qingbolan.png')
+                             'tabAlbumInterface', self.tr('Group_meeting_one'), FIF.CHAT)
 
         self.controlPanel.setObjectName('controlPanel')
         StyleSheet.NAVIGATION_VIEW_INTERFACE.apply(self)
@@ -136,6 +157,10 @@ class centralInterface(QWidget):
         self.panelLayout.addSpacing(4)
         self.panelLayout.addWidget(self.friendsLabel)
 
+        # self.panelLayout.addSpacing(4)
+        self.panelLayout.addWidget(self.friendsList, 0, Qt.AlignTop)
+
+
     def addSubInterface(self, widget: QLabel, objectName, text, icon):
         widget.setObjectName(objectName)
         # widget.setAlignment(Qt.AlignTop | Qt.AlignLeft)
@@ -160,8 +185,8 @@ class centralInterface(QWidget):
         qrouter.push(self.stackedWidget, widget.objectName())
 
     def addTab(self):
-        text = f'硝子酱一级棒卡哇伊×{self.tabCount}'
-        self.addSubInterface(QLabel('🥰 ' + text), text, text, ':/gallery/images/Smiling_with_heart.png')
+        text = f'addnewChat({self.tabCount})'
+        self.addSubInterface(FIF.CHAT)
         self.tabCount += 1
 
     def removeTab(self, index):
@@ -197,8 +222,7 @@ class TabInterface(QWidget):
 
         # add items to pivot
         self.addSubInterface(self.userHomeInterface, 'userHomeInterface', self.tr('userHome'))
-        self.addSubInterface(self.albumInterface, 'albumInterface', self.tr('unamed_2'))
-        self.addSubInterface(self.artistInterface, 'artistInterface', self.tr('unamed_3'))
+        self.addSubInterface(self.albumInterface, 'albumInterface', self.tr('group_meeting1'))
 
         self.vBoxLayout.addWidget(self.pivot, 0, Qt.AlignJustify)
         self.vBoxLayout.addWidget(self.stackedWidget)

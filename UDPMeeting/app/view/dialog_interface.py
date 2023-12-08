@@ -14,6 +14,7 @@ from qfluentwidgets import FluentIcon as FIF
 from ..components.com_msglst import MsgList, CommentInputArea
 from ..components.com_onesBoard import UsersDisplayWidget
 from ..components.com_chat_page import ChatRoom
+from ..components.com_WhiteBoard import DrawingTools
 
 
 # 用户列表模块
@@ -31,11 +32,22 @@ class PublicChat(ChatRoom):
         
 # 会议室信息模块
 class MeetingHeader(QWidget):
-    def __init__(self):
+    def __init__(self, is_default=True):
         super().__init__()
         self.info_label = StrongBodyLabel("Cameras of MeetingRoom are here!")
         layout = QVBoxLayout(self)
-        layout.addWidget(self.info_label)
+        self.users_display_widget = None
+
+        if is_default:
+            users_data = [
+                {'name': 'Qingbolan', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': True},
+                {'name': 'ShiHaoTong', 'avatar': 'app/resource/images/ShiHaoTong.jpg', 'is_online': True},
+                {'name': 'Arbitrary', 'avatar': 'app/resource/images/Arbitrary.jpg', 'is_online': True},
+            ]
+
+        self.users_display_widget = UsersDisplayWidget(users_data)
+        layout.addWidget(self.users_display_widget)
+
 
 # 功能按钮区模块
 class MeetingBoardArea(QWidget):
@@ -44,47 +56,12 @@ class MeetingBoardArea(QWidget):
         self.is_default = True
         self.layout = QVBoxLayout(self)
         # 添加功能按钮
-        self.info_label = StrongBodyLabel("function Board of MeetingRoom is here!")
+        self.whiteBoard = DrawingTools()
         # layout = QVBoxLayout(self)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        self.commandBar=self.createCommandBar()
-        self.layout.addWidget(self.commandBar,Qt.AlignCenter)
+        self.layout.addWidget(self.whiteBoard,Qt.AlignCenter)
 
-        self.users_display_widget = None
-
-        if self.is_default:
-            users_data = [
-                {'name': 'Alice', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': True},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                {'name': 'Bob', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
-                # ... Add more user data as needed
-            ]
-
-            self.users_display_widget = UsersDisplayWidget(users_data)
-            self.layout.addWidget(self.users_display_widget)
-        # self.chat_button = PushButton("Chat")
-        # self.polling_button = PushButton("Polling")
-        # self.webcams_button = PushButton("Webcams")
-        # self.audio_button = PushButton("Audio")
-        # self.emojis_button = PushButton("Emojis")
-        # self.screen_sharing_button = PushButton("Screen Sharing")
-        # self.breakout_rooms_button = PushButton("Breakout Rooms")
-        # self.whiteboard_button = PushButton("Whiteboard")
-        # 将按钮添加到布局
-        # layout.addWidget(self.chat_button)
-        # layout.addWidget(self.polling_button)
-        # layout.addWidget(self.webcams_button)
-        # layout.addWidget(self.audio_button)
-        # layout.addWidget(self.emojis_button)
-        # layout.addWidget(self.screen_sharing_button)
-        # layout.addWidget(self.breakout_rooms_button)
-        # layout.addWidget(self.whiteboard_button)
         
 
     def createCommandBar(self):
@@ -92,13 +69,13 @@ class MeetingBoardArea(QWidget):
         bar.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
 
 
-        newPhoto = Action(FIF.ADD, self.tr('新建'), shortcut='Ctrl+N')
+        newPhoto = Action(FIF.ADD, self.tr('new share'), shortcut='Ctrl+N')
         newPhoto.triggered.connect(self.open_image)
 
-        zoom_in = Action(FIF.ZOOM_IN, self.tr('放大'),shortcut='Ctrl+U')
+        zoom_in = Action(FIF.ZOOM_IN, self.tr('scron up'),shortcut='Ctrl+U')
         zoom_in.triggered.connect(self.large_click)
 
-        zoom_out = Action(FIF.ZOOM_OUT, self.tr('缩小'),shortcut='Ctrl+D')
+        zoom_out = Action(FIF.ZOOM_OUT, self.tr('scron down'),shortcut='Ctrl+D')
         zoom_out.triggered.connect(self.small_click)
 
 
@@ -171,18 +148,15 @@ class MeetingBoardArea(QWidget):
             self.box.adjustSize()
             self.update()
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QVBoxLayout, QHBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
-from qfluentwidgets import ListWidget, ScrollArea, StrongBodyLabel
+from qfluentwidgets import ListWidget, StrongBodyLabel
 
 # UserList, PublicChat, MeetingInfo, and ButtonsArea classes remain the same
 
 class MeetingWindow(QWidget):
     def __init__(self):
-        # super().__init__()
-        # self.setWindowTitle('Demo Meeting - BigBlueButton')
-        # self.setGeometry(400, 400, 1200, 1000)
 
         h_layout = QHBoxLayout()
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)

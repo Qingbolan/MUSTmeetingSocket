@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QHBoxLayout, QLabel, QVBoxLayout, QFrame, QApplication, QWidget
 from PyQt5.QtGui import QPainter, QPainterPath, QPixmap, QPainter
 from PyQt5.QtCore import Qt, QSize
-from qfluentwidgets import SmoothScrollArea,ToolButton,CaptionLabel
+from qfluentwidgets import SmoothScrollArea,ToolButton,CaptionLabel,AvatarWidget	
 
 class UserAvatar(QLabel):
     def __init__(self, pixmap, parent=None):
@@ -37,9 +37,11 @@ class UserWidget(QFrame):
         
         # avatar_pixmap = QPixmap(avatar_path)
         # self.avatar = UserAvatar(avatar_pixmap)
-        self.avatar = ToolButton(avatar_path)
-        self.avatar.setIconSize(QSize(80, 80))
-        self.avatar.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
+        # self.avatar = ToolButton(avatar_path)
+        self.avatar = AvatarWidget(avatar_path)
+        # self.avatar.setIconSize(QSize(80, 80))
+        self.avatar.setBaseSize(QSize(80, 80))
+        # self.avatar.setStyleSheet("ToolButton { border-radius: 50%; }")  # Set the border-radius
 
 
         self.line2_layout = QHBoxLayout()
@@ -99,13 +101,8 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     
     users_data = [
-        {'name': 'Alice', 'avatar': 'app/resource/images/kunkun.png', 'is_online': True},
-        {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
-        {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
-        {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
-        {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
-        {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
-        {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
+        {'name': 'ShiHaoTong', 'avatar': 'app/resource/images/ShiHaoTong.jpg', 'is_online': True},
+        {'name': 'Qingbolan', 'avatar': 'app/resource/images/Qingbolan.jpg', 'is_online': False},
         {'name': 'Bob', 'avatar': 'app/resource/images/kunkun.png', 'is_online': False},
         # ... Add more user data as needed
     ]

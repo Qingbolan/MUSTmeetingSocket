@@ -16,5 +16,8 @@
     "QFluentWidgets": {
         "ThemeColor": "#ff009faa",
         "ThemeMode": "Dark"
+    },
+    "userName": {
+        "name": "Qingbolan"
     }
 }
