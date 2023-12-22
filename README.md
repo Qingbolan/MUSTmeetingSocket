@@ -140,7 +140,7 @@ In our application, the Meeting Room and Chatting Room are distinct yet compleme
 >
 > Flowing Gantt chart demonstrates the whole progress as we developed the project.  
 
-<img src="./C:/Users/Qingbolan/Desktop/typora-user-images/image-20231220201945324.png" alt="image-20231220201945324" style="zoom:80%;" />
+<img src="typora-user-images/image-20231220201945324.png" alt="image-20231220201945324" style="zoom:80%;" />
 
 - **Building the Web Server**:
 
@@ -170,7 +170,7 @@ This realization became our guiding star, leading us through the complexities of
 
 ## 3 Stage 1: Building the Web Server
 
-<img src="./C:/Users/Qingbolan/Desktop/assets/image-20231222211730692.png" alt="image-20231222211730692" style="zoom: 50%;" />
+<img src="assets/image-20231222211730692.png" alt="image-20231222211730692" style="zoom: 50%;" />
 
 > - **Challenge:** Establishing a robust server capable of handling multiple client requests simultaneously.
 > - **Breakthrough:** Utilizing text protocols for efficient data handling, ensuring seamless communication between server and clients.
@@ -402,7 +402,7 @@ Our entity-relationship diagram highlights the relationship between users, rooms
 
 ## 5. Stage 3: Whiteboard Feature Development
 
-![image-20231222211648485](./C:/Users/Qingbolan/Desktop/assets/image-20231222211648485.png)
+![image-20231222211648485](assets/image-20231222211648485.png)
 
 > - **Challenge:** Creating a real-time collaborative whiteboard without overwhelming bandwidth.
 > - **Innovation:** Transmitting key points and styles instead of the entire drawing, dramatically reducing data load while maintaining functionality.
@@ -553,7 +553,7 @@ O -- No --> Q
 
 > https://github.com/Qingbolan/MUSTmeetingSocke
 
-![image-20231222201955621](./C:/Users/Qingbolan/Desktop/assets/image-20231222201955621.png)
+![image-20231222201955621](assets/image-20231222201955621.png)
 
 ### 7.1 Recount of the Entire Project
 
@@ -575,23 +575,23 @@ O -- No --> Q
 
 > Login with user Name and password
 
-<img src="./C:/Users/Qingbolan/Desktop/assets/fd3d1fff8007a733b58763564c8d8ba.png" alt="fd3d1fff8007a733b58763564c8d8ba" style="zoom: 50%;" />
+<img src="assets/fd3d1fff8007a733b58763564c8d8ba.png" alt="fd3d1fff8007a733b58763564c8d8ba" style="zoom: 50%;" />
 
 > do some UI settings
 
-<img src="./C:/Users/Qingbolan/Desktop/assets/f5ee0d1c65188e4122825fe3f42561e.png" alt="f5ee0d1c65188e4122825fe3f42561e" style="zoom: 80%;" />
+<img src="assets/f5ee0d1c65188e4122825fe3f42561e.png" alt="f5ee0d1c65188e4122825fe3f42561e" style="zoom: 80%;" />
 
 > select your chat,click and enter(black theme on the left;white theme on the right)
 
-![image-20231222214912759](./C:/Users/Qingbolan/Desktop/assets/image-20231222214912759.png)
+![image-20231222214912759](assets/image-20231222214912759.png)
 
 > Input your message and chat with each other(black theme on the left;white theme on the right)
 
-![image-20231222215002231](./C:/Users/Qingbolan/Desktop/assets/image-20231222215002231.png)
+![image-20231222215002231](assets/image-20231222215002231.png)
 
 > enter the meeting room and draw something.. 
 
-<img src="./C:/Users/Qingbolan/Desktop/assets/747d4b24da1f6498bd3ec21ebc06703.png" alt="747d4b24da1f6498bd3ec21ebc06703" style="zoom: 80%;" />
+<img src="assets/747d4b24da1f6498bd3ec21ebc06703.png" alt="747d4b24da1f6498bd3ec21ebc06703" style="zoom: 80%;" />
 
 ### 7.2 Recount of Web-Socket-Server
 
@@ -609,7 +609,7 @@ O -- No --> Q
 
 > use your browser with localhost:[your Port]
 
-![image-20231222225508363](./C:/Users/Qingbolan/Desktop/assets/image-20231222225508363.png)
+![image-20231222225508363](assets/image-20231222225508363.png)
 
 ### 7.3 Recount of White Board
 
@@ -629,7 +629,7 @@ O -- No --> Q
 
 #### 7.1.2 Usages
 
-![image-20231222211648485](./C:/Users/Qingbolan/Desktop/assets/image-20231222211648485.png)
+![image-20231222211648485](assets/image-20231222211648485.png)
 
 
 
