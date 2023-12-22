@@ -1,0 +1,659 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="ThemeMarch">
+	<!-- Page Title -->
+	<title>Stable Diffusion 启动器v0.1</title>
+	<!-- Favicon Icon -->
+	<!-- <link rel="icon" href="assets/img/favicon.png"> -->
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/icofont.css">
+	<link rel="stylesheet" href="assets/css/flaticon.css">
+	<link rel="stylesheet" href="assets/css/fontawesome.min.css">
+	<link rel="stylesheet" href="assets/css/slick.min.css">
+	<link rel="stylesheet" href="assets/css/modal.video.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+    <script type="text/javascript" src="assets/vendor/backward/html5shiv.js"></script>
+    <script type="text/javascript" src="assets/vendor/backward/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.shutters{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.shuttersUl{
+        width: 900px;
+        height: 500px;
+        overflow: hidden;
+        cursor: pointer;
+		padding: 0;
+    }
+	.shuttersLi{
+        float: left;
+        width: 180px;
+        height: 500px;
+        list-style: none;
+        transition: all 1s;
+        position: relative;
+    }
+	.shuttersImg{
+        height: 100%;
+        width: 700px;
+    }
+	.shuttersUl:hover .shuttersLi{
+        width: 50px;
+    }
+    .shuttersUl .shuttersLi:hover{
+        width: 700px;
+    }
+</style>
+
+<body data-spy="scroll" data-target=".tm-section-active" class="tm-orange-color">
+	<!-- Start Preloader -->
+	<div id="tm-preloader">
+		<div class="tm-preloader-in">
+			<div class="bar bar-top"></div>
+			<div class="bar bar-right"></div>
+			<div class="bar bar-bottom"></div>
+			<div class="bar bar-left"></div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+	<!-- Start Site Header Wrap -->
+	<header class="tm-site-header">
+		<div class="tm-header-menu">
+			<div class="container tm-header-menu-container">
+				<div class="tm-site-branding">
+					<!-- Logo -->
+						<img src="assets/img/launcher-logo.svg" alt="" class="tm-logo" style="max-height: 70px;">
+						<div class="tm-f25 tm-lg-f20">Stable Diffusion 启动器v0.1</div>
+				</div>
+				<nav class="tm-primary-nav tm-section-active">
+					<ul class="tm-primary-nav-list">
+						<li class="menu-item"><a href="#video" class="nav-link">About</a></li>
+						<li class="menu-item"><a href="#howitworks" class="nav-link">How It Works</a></li>
+						<li class="menu-item"><a href="#faq" class="nav-link">Faq</a></li>
+					</ul>
+					<!-- <div class="tm-menu-meta">
+						<button class="tm-btn tm-style1 tm-with-border" data-toggle="modal"
+							data-target="#tm-login">LOGIN</button>
+						<button class="tm-btn tm-style1 tm-with-border" data-toggle="modal"
+							data-target="#tm-signup">SIGNUP</button>
+					</div> -->
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- End Site Header Wrap -->
+	<!-- 右侧圆点 -->
+	<div class="tm-section-active tm-fix-bar">
+		<ul>
+			<li><a href="#home" class="nav-link"></a></li>
+			<!-- <li><a href="#about" class="nav-link"></a></li> -->
+			<li><a href="#video" class="nav-link"></a></li>
+			<li><a href="#howitworks" class="nav-link"></a></li>
+			<li><a href="#faq" class="nav-link"></a></li>
+		</ul>
+	</div>
+	<!-- Start Hero Section -->
+	<section class="tm-hero-section tm-style1 tm-bg" id="home"
+		style="background-image: url(assets/img/subscribe-bg-orange.jpg);">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="tm-hero-text">
+						<div
+							class="tm-hero-title tm-white-c tm-f60 tm-lg-f50 tm-fw-medium tm-m0 tm-lh100 col-xs-t-14 tm-md-f30 tm-md-lh40 bigText">
+							Stable Diffusion</div>
+							<div class="tm-hero-title tm-white-c tm-f90 tm-lg-f75 tm-fw-bold tm-m0 tm-lh100 col-xs-t-14 tm-md-f30 tm-md-lh40 bigText">启动器v0.1</div>
+						<div class="empty-space col-xs-b25"></div>
+						<div class="tm-btn-group">
+							<a href="#video" class="tm-btn tm-style1">Learn More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="tm-countdown-outer">
+						<div class="tm-countdown-wrap tm-style1 text-center">
+							<div class="tm-countdown-bg"></div>
+							<div class="tm-countdown-box">
+								<img src="assets/img/launcher.png" alt="" class="tm-logo" style="max-height: 100%;">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Hero Section -->
+
+	<!-- Start About Section -->
+	<section class="tm-about-wrap" id="about">
+		<div class="empty-space col-md-b90 col-xs-b55"></div>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="tm-about-img-wrap">
+						<div class="tm-about-img">
+							<img src="assets/img/about-img4.png" alt="">
+							<img src="assets/img/ethereum1-orange.png" alt="" class="tm-ethereum">
+							<img src="assets/img/ethereum2-orange.png" alt="" class="tm-ethereum2">
+							<img src="assets/img/ethereum2-orange.png" alt="" class="tm-ethereum3">
+							<img src="assets/img/ethereum2-orange.png" alt="" class="tm-ethereum4">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="tm-about">
+						<h2 class="tm-m0 tm-lh40 col-xs-t-1 tm-md-f28 tm-md-lh35">What is <br>
+							ERC20 Token ICO?</h2>
+						<div class="empty-space col-md-b20 col-xs-b10"></div>
+						<div class="tm-f20 tm-md-f15 tm-m0 tm-lh30 tm-md-lh20">Our Platform is built for Ethereum
+							Blockchain ERC20
+							Token ICO.</div>
+						<div class="empty-space col-md-b10 col-xs-b15"></div>
+						<h2 class="tm-m0 tm-lh60 tm-md-f28 tm-md-lh34">Why ?</h2>
+						<div class="empty-space col-md-b10 col-xs-b10"></div>
+						<div class="tm-about-text tm-f20 tm-md-f15 tm-lh32 tm-md-lh20 col-xs-t-1">
+							<p>As of January 2018, there were more than 21,000 ERC20 token contracts.</p>
+							<p>We Built this Template because Ethereum ECO system is the most popular Platform.</p>
+							<p>Among the most successful ERC20 token sales are EOS, Bancor, Qash and Bankex raising over
+								$70 Million each.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="empty-space col-md-b85 col-xs-b55"></div>
+	</section>
+	<!-- End About Section -->
+
+	<!-- 百叶窗 -->
+	<div class="tm-about-video" id="video">
+		<img src="assets/img/bg-orange.jpg" alt="Video Background">
+		<div class="shutters">
+			<ul class="shuttersUl">
+				<li class="shuttersLi">
+					<img class="shuttersImg" src="assets/img/member01.jpg" alt="">
+				</li>
+				<li class="shuttersLi">
+					<img class="shuttersImg" src="assets/img/member02.jpg" alt="">
+				</li>
+				<li class="shuttersLi">
+					<img class="shuttersImg" src="assets/img/member03.jpg" alt="">
+				</li>
+				<li class="shuttersLi">
+					<img class="shuttersImg" src="assets/img/member04.jpg" alt="">
+				</li>
+				<li class="shuttersLi">
+					<img class="shuttersImg" src="assets/img/member05.jpg" alt="">
+				</li>
+			</ul>
+		</div>
+	
+	</div>
+	<!-- End Video Section -->
+
+	<!-- Start How it Works -->
+	<section class="tm-ocher-work" id="howitworks">
+		<div class="empty-space col-md-b85 col-xs-b50"></div>
+		<div class="container">
+			<div class="tm-section-heading tm-style1">
+				<div class="tm-section-heading-left">
+					<h2 class="tm-m0 tm-md-f28 tm-md-lh34">Stable Diffusion启动器<br>
+						是一款桌面应用程序</h2>
+				</div>
+				<div class="tm-section-heading-right">
+					<h2 class="col-xs-b20 tm-md-f28 tm-md-lh34">Why?</h2>
+					<div class="tm-f20 tm-md-f15 tm-lh30 tm-md-lh24">Ocher is the most functional template for Ethereum
+						block chain
+						ERC Token ICO’S. Switable for star up ICO’s.</div>
+				</div>
+			</div>
+			<div class="empty-space col-md-b75 col-xs-b50"></div>
+			<div class="tm-section-heading tm-style2">
+				<h2 class="text-center col-xs-b2 col-xs-t-2 tm-md-f28 tm-md-lh34">Look at our adventages</h2>
+			</div>
+			<div class="empty-space col-md-b55 col-xs-b35"></div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="tm-single-work">
+						<div class="tm-single-work-icon"><i class="flaticon-ethereum"></i></div>
+						<div class="tm-single-work-text tm-f20 tm-md-f18 tm-md-lh28 tm-lh30">fluent风格
+						</div>
+					</div>
+					<div class="empty-space col-md-b30 col-xs-b30"></div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="tm-single-work">
+						<div class="tm-single-work-icon"><i class="flaticon-strategy"></i></div>
+						<div class="tm-single-work-text tm-f20 tm-md-f18 tm-md-lh28 tm-lh30">支持黑暗模式</div>
+					</div>
+					<div class="empty-space col-md-b30 col-xs-b30"></div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="tm-single-work">
+						<div class="tm-single-work-icon"><i class="flaticon-block"></i></div>
+						<div class="tm-single-work-text tm-f20 tm-md-f18 tm-md-lh28 tm-lh30">一键部署和启动</div>
+					</div>
+					<div class="empty-space col-md-b30 col-xs-b30"></div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="tm-single-work">
+						<div class="tm-single-work-icon"><i class="flaticon-decentralized"></i></div>
+						<div class="tm-single-work-text tm-f20 tm-md-f18 tm-md-lh28 tm-lh30">模型管理和文件管理</div>
+					</div>
+					<div class="empty-space col-md-b30 col-xs-b30"></div>
+				</div>
+			</div>
+		</div>
+		<div class="empty-space col-md-b60 col-xs-b30"></div>
+		<!-- <div class="tm-section-heading tm-style2">
+			<h2 class="text-center col-xs-b2 col-xs-t-1 tm-md-f28 tm-md-lh34">Comparison with other solutions</h2>
+		</div>
+		<div class="empty-space col-md-b55 col-xs-b35"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="tm-comparison-table text-center">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Traditional</th>
+										<th>BlockBit</th>
+										<th>ICOBlock</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Decentralized Database</td>
+										<td>
+											<div class="tm-blank"></div>
+										</td>
+										<td>
+											<div class="tm-blank"></div>
+										</td>
+										<td>
+											<div class="tm-blank"></div>
+										</td>
+									</tr>
+									<tr>
+										<td>Unique Numeric ID</td>
+										<td>
+											<div class="tm-blank"></div>
+										</td>
+										<td>
+											<div class="tm-blank"></div>
+										</td>
+										<td>
+											<div class="tm-blank"></div>
+										</td>
+									</tr>
+									<tr>
+										<td>Primary Target Market</td>
+										<td>UK</td>
+										<td>USA</td>
+										<td>Australia</td>
+									</tr>
+									<tr>
+										<td>Target Market Size</td>
+										<td>Country Specific</td>
+										<td>123 Million</td>
+										<td>1.5 Billion</td>
+									</tr>
+									<tr>
+										<td>Information Liability</td>
+										<td>High</td>
+										<td>Medium</td>
+										<td>Low</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="empty-space col-md-b95 col-xs-b60"></div> -->
+	</section>
+	<!-- End How it Works -->
+
+	<!-- Start FAQ Section -->
+	<section class="tm-faq-wrap tm-bg" id="faq" style="background-image: url(assets/img/faq-bg-orange.jpg);">
+		<div class="empty-space col-md-b90 col-xs-b55"></div>
+		<h2 class="text-center col-xs-b2 tm-light-blue-c col-xs-t-1 tm-md-f28 tm-md-lh34">Frequently Asked Questions
+		</h2>
+		<div class="empty-space col-md-b55 col-xs-b35"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="tabs animated-fade">
+						<div class="tab-content">
+							<div id="top-question" class="tab active">
+								<div class="tm-faq">
+									<div class="accordian-wrapper">
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">What is Ocher ?
+											</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">Why do we need
+												Ethereum?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">Which countries
+												does populous currently support?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">What kind
+												security does populous use to protect my account?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">What problems
+												does Ocher attempt to solve?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">What would you
+												consider to be a success with this ICO?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">Are Ocher token
+												ERC-20 resellable?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f16">Whom can I reach
+												out to with other questions?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+									</div>
+								</div><!-- .tm-faq -->
+							</div>
+							<div id="company" class="tab">
+								<div class="tm-faq">
+									<div class="accordian-wrapper">
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What is Ocher ?
+											</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Why do we need
+												Ethereum?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Which countries
+												does populous currently support?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What kind
+												security does populous use to protect my account?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What problems
+												does Ocher attempt to solve?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What would you
+												consider to be a success with this ICO?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Are Ocher token
+												ERC-20 resellable?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Whom can I reach
+												out to with other questions?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+									</div>
+								</div><!-- .tm-faq -->
+							</div>
+							<div id="product" class="tab">
+								<div class="tm-faq">
+									<div class="accordian-wrapper">
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What is Ocher ?
+											</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Why do we need
+												Ethereum?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Which countries
+												does populous currently support?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What kind
+												security does populous use to protect my account?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What problems
+												does Ocher attempt to solve?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What would you
+												consider to be a success with this ICO?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Are Ocher token
+												ERC-20 resellable?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Whom can I reach
+												out to with other questions?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+									</div>
+								</div><!-- .tm-faq -->
+							</div>
+							<div id="token-sale" class="tab">
+								<div class="tm-faq">
+									<div class="accordian-wrapper">
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What is Ocher ?
+											</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Why do we need
+												Ethereum?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Which countries
+												does populous currently support?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What kind
+												security does populous use to protect my account?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What problems
+												does Ocher attempt to solve?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">What would you
+												consider to be a success with this ICO?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Are Ocher token
+												ERC-20 resellable?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+										<div class="single-accordian">
+											<h3 class="accordian-head tm-light-blue-c tm-f20 tm-md-f15">Whom can I reach
+												out to with other questions?</h3>
+											<div class="accordian-body">Ocher is the most functional template for
+												Ethereum block chain ERC Token ICO’S. Switable for star up ICO’s. A
+												token sale, sometimes referred to as an initial coin offering (ICO), is
+												form of rowd-funding for digital currency-related projects.</div>
+										</div><!-- .single-accordian -->
+									</div>
+								</div><!-- .tm-faq -->
+							</div>
+						</div>
+					</div>
+				</div><!-- .col -->
+			</div>
+		</div>
+		<div class="empty-space col-md-b85 col-xs-b50"></div>
+	</section>
+	<!-- End FAQ Section -->
+
+	<!-- Scroll Up -->
+	<div id='scrollup'><i class="fa fa-angle-double-up"></i></div>
+
+	<!-- Scripts -->
+	<script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/smoothScroll.min.js"></script>
+	<script src="assets/js/jQuery.easing.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/mailchimp.min.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/modal.video.min.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>
