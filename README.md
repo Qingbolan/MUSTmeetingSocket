@@ -413,7 +413,7 @@ Our entity-relationship diagram highlights the relationship between users, rooms
 
 This approach dramatically reduces the data load. When a user draws on the whiteboard, the application generates a set of instructions describing the drawing, such as start and end points, color, and thickness. These instructions are then sent as text to other clients, where they are reconstructed into the original drawing. This method is both bandwidth-efficient and ensures real-time collaboration, as evidenced by the flowchart and component diagram in our report.
 
-![ff4a1a3ca885fe074ec0016e54e6647](./C:/Users/Qingbolan/Desktop/assets/ff4a1a3ca885fe074ec0016e54e6647.png)
+![ff4a1a3ca885fe074ec0016e54e6647](assets/ff4a1a3ca885fe074ec0016e54e6647.png)
 
 For instance, 
 
